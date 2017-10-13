@@ -1,9 +1,18 @@
 pipeline {
   agent any
   stages {
-    stage('Test') {
-      steps {
-        echo 'Test Environment'
+    stage('DB Unit') {
+      parallel {
+        stage('Test') {
+          steps {
+            echo 'Test Environment'
+          }
+        }
+        stage('') {
+          steps {
+            echo 'DB Unit'
+          }
+        }
       }
     }
     stage('STG') {
