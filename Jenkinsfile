@@ -8,7 +8,7 @@ pipeline {
             echo 'Test Environment'
           }
         }
-        stage('') {
+        stage('DB Unit') {
           steps {
             echo 'DB Unit'
           }
