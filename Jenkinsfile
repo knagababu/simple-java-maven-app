@@ -1,35 +1,20 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
+    stage('Test') {
       steps {
-        sh '''pipeline {
-    agent {
-        docker {
-            image \'maven:3-alpine\'
-            args \'-v /root/.m2:/root/.m2\'
-        }
+        echo 'Test Environment'
+      }
     }
-    stages {
-        stage(\'Build\') {
-            steps {
-                sh \'mvn -B -DskipTests clean package\'
-            }
-        }
-        stage(\'Test\') {
-            steps {
-                sh \'mvn test\'
-            }
-        }
-        stage(\'Deliver\') {
-            steps {
-                sh \'./jenkins/scripts/deliver.sh\'
-            }
-        }
+    stage('STG') {
+      steps {
+        echo 'Environment '
+      }
     }
-}
-'''
-        }
+    stage('Preprod') {
+      steps {
+        echo 'Preprod'
       }
     }
   }
+}
